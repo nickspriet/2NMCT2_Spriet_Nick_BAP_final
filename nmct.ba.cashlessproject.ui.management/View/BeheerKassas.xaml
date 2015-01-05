@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="nmct.ba.cashlessproject.ui.management.View.BeheerKassas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.management.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="420" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:BeheerKassasVM />
+    </UserControl.DataContext>
+
+    <Grid Background="#FF3C3C3C">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="KASSA'S" Style="{StaticResource TabTitle}" Grid.ColumnSpan="3"/>
+        <TextBox Text="{Binding Kassanaam, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <ListBox ItemsSource="{Binding SearchList}" DisplayMemberPath="KassaNaam" SelectedItem="{Binding SelectedKassa}" Grid.Row="2" Grid.ColumnSpan="3" />
+        <TextBlock Text="Niets gevonden..." Grid.Row="2" Grid.ColumnSpan="3" Margin="30,5,5,5" Height="30" VerticalAlignment="Top" Visibility="{Binding NotFoundVisible}" FontSize="20" Padding="5, 0" />
+        <Grid Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="7.5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="7.5*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3.5*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="{Binding SelectedKassa.KassaNaam}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource GegevensLabels}" />
+            <DataGrid ItemsSource="{Binding MedewerkersPerKassa}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan="8">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Van, StringFormat=dd/MM/yyyy}" />
+                    <DataGridTextColumn Header="Van" Binding="{Binding Van, StringFormat=HH:mm}" />
+                    <DataGridTextColumn Header="Tot" Binding="{Binding Tot, StringFormat=HH:mm}" />
+                    <DataGridTextColumn Header="Medewerker" Binding="{Binding Medewerker.MedewerkerNaam}" />
+                </DataGrid.Columns>
+            </DataGrid> 
+        </Grid>
+    </Grid>
+
+
+
+</UserControl>

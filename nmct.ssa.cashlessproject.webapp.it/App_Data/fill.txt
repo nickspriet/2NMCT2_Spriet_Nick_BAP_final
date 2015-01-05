@@ -1,0 +1,187 @@
+CREATE LOGIN [@@DbGebruikersNaam] WITH PASSWORD=N'@@DbWachtwoord', DEFAULT_DATABASE=[@@DbNaam], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+USE [@@DbNaam]
+GO
+/****** Object:  User [LoginUser]    Script Date: 19/11/2014 20:35:46 ******/
+CREATE USER [LoginUser] FOR LOGIN [@@DbGebruikersNaam] WITH DEFAULT_SCHEMA=[dbo]
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [LoginUser]
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [LoginUser]
+GO
+/****** Object:  Table [dbo].[Errorlogs]    Script Date: 05/01/2015 04:03:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Errorlogs](
+	[KassaID] [int] NOT NULL,
+	[Timestamp] [int] NOT NULL,
+	[Message] [nvarchar](50) NOT NULL,
+	[Stacktrace] [ntext] NOT NULL,
+ CONSTRAINT [PK_Errorlogs] PRIMARY KEY CLUSTERED 
+(
+	[KassaID] ASC,
+	[Timestamp] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Kassas]    Script Date: 05/01/2015 04:03:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Kassas](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[KassaNaam] [nvarchar](50) NOT NULL,
+	[Toestel] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Registerrs] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Kassas_Medewerkers]    Script Date: 05/01/2015 04:03:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Kassas_Medewerkers](
+	[KassaID] [int] NOT NULL,
+	[MedewerkerID] [int] NOT NULL,
+	[Van] [int] NOT NULL,
+	[Tot] [int] NOT NULL,
+ CONSTRAINT [PK_Kassas_Medewerkers] PRIMARY KEY CLUSTERED 
+(
+	[KassaID] ASC,
+	[MedewerkerID] ASC,
+	[Van] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Klanten]    Script Date: 05/01/2015 04:03:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Klanten](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[RijksRegNummer] [bigint] NOT NULL,
+	[KlantNaam] [nvarchar](50) NOT NULL,
+	[KlantVoornaam] [nvarchar](50) NOT NULL,
+	[KaartNummer] [char](12) NOT NULL,
+	[Geboortedatum] [int] NOT NULL,
+	[Straat] [nvarchar](50) NOT NULL,
+	[Nummer] [nvarchar](50) NOT NULL,
+	[Stad] [nvarchar](50) NOT NULL,
+	[Postcode] [char](4) NOT NULL,
+	[Nationaliteit] [nvarchar](50) NOT NULL,
+	[PasFoto] [image] NULL,
+	[Saldo] [float] NOT NULL,
+ CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Medewerkers]    Script Date: 05/01/2015 04:03:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Medewerkers](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[MedewerkerNaam] [nvarchar](50) NULL,
+	[MedewerkerVoornaam] [nvarchar](50) NULL,
+	[Straat] [nvarchar](50) NULL,
+	[Nummer] [nvarchar](50) NULL,
+	[Stad] [nvarchar](50) NULL,
+	[Postcode] [char](4) NULL,
+	[Email] [nvarchar](50) NOT NULL,
+	[Telefoon] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Employees] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Producten]    Script Date: 05/01/2015 04:03:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Producten](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ProductNaam] [nvarchar](50) NOT NULL,
+	[Prijs] [numeric](5, 2) NOT NULL,
+	[IsActief] [bit] NOT NULL,
+ CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Verkoop]    Script Date: 05/01/2015 04:03:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Verkoop](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Timestamp] [int] NOT NULL,
+	[KlantID] [int] NOT NULL,
+	[KassaID] [int] NOT NULL,
+	[ProductID] [int] NOT NULL,
+	[AantalProducten] [int] NOT NULL,
+	[TotaalPrijs] [numeric](5, 2) NOT NULL,
+ CONSTRAINT [PK_Sales] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[Errorlogs]  WITH CHECK ADD  CONSTRAINT [FK_Errorlogs_Kassas] FOREIGN KEY([KassaID])
+REFERENCES [dbo].[Kassas] ([ID])
+GO
+ALTER TABLE [dbo].[Errorlogs] CHECK CONSTRAINT [FK_Errorlogs_Kassas]
+GO
+ALTER TABLE [dbo].[Kassas_Medewerkers]  WITH CHECK ADD  CONSTRAINT [FK_Kassas_Medewerkers_Kassas] FOREIGN KEY([KassaID])
+REFERENCES [dbo].[Kassas] ([ID])
+GO
+ALTER TABLE [dbo].[Kassas_Medewerkers] CHECK CONSTRAINT [FK_Kassas_Medewerkers_Kassas]
+GO
+ALTER TABLE [dbo].[Kassas_Medewerkers]  WITH CHECK ADD  CONSTRAINT [FK_Kassas_Medewerkers_Medewerkers] FOREIGN KEY([MedewerkerID])
+REFERENCES [dbo].[Medewerkers] ([ID])
+GO
+ALTER TABLE [dbo].[Kassas_Medewerkers] CHECK CONSTRAINT [FK_Kassas_Medewerkers_Medewerkers]
+GO
+ALTER TABLE [dbo].[Verkoop]  WITH CHECK ADD  CONSTRAINT [FK_Verkoop_Kassas] FOREIGN KEY([KassaID])
+REFERENCES [dbo].[Kassas] ([ID])
+GO
+ALTER TABLE [dbo].[Verkoop] CHECK CONSTRAINT [FK_Verkoop_Kassas]
+GO
+ALTER TABLE [dbo].[Verkoop]  WITH CHECK ADD  CONSTRAINT [FK_Verkoop_Producten] FOREIGN KEY([ProductID])
+REFERENCES [dbo].[Producten] ([ID])
+GO
+ALTER TABLE [dbo].[Verkoop] CHECK CONSTRAINT [FK_Verkoop_Producten]
+GO
+ALTER TABLE [dbo].[Verkoop]  WITH CHECK ADD  CONSTRAINT [FK_Verkoop_Verkoop] FOREIGN KEY([KlantID])
+REFERENCES [dbo].[Klanten] ([ID])
+GO
+ALTER TABLE [dbo].[Verkoop] CHECK CONSTRAINT [FK_Verkoop_Verkoop]
+GO

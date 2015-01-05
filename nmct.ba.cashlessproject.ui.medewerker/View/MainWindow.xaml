@@ -1,0 +1,45 @@
+﻿<Window x:Class="nmct.ba.cashlessproject.ui.medewerker.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:v="clr-namespace:nmct.ba.cashlessproject.ui.medewerker.View"
+        xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.medewerker.ViewModel"
+        Title="MainWindow" Height="1080" Width="1920" ResizeMode="NoResize" WindowStyle="None" WindowState="Maximized" >
+
+    <Window.DataContext>
+        <vm:ApplicationVM />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:ScanBadgeVM}" >
+            <v:ScanBadge />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:BestellingVM}" >
+            <v:Bestelling />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Background="#FF3C3C3C" Grid.ColumnSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="{Binding IngelogdeMedewerker}" Grid.ColumnSpan="5" Style="{StaticResource HeaderLabel}"/>
+        <Label Content="{Binding IngelogdeKassa.KassaNaam}" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource HeaderLabel}" HorizontalAlignment="Center"/>
+        <Button Content="Log out" Command="{Binding LogoutCommand}" Grid.Column="4" IsEnabled="{Binding btnLogoutIsEnabled}" />
+
+        <ContentControl x:Name="bg" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="5" Content="{Binding CurrentPage}"/>
+        <Label Content="{Binding DatumTijd}" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource HeaderLabel}"/>
+        <Label Content="&#169; Nick Spriet" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Style="{StaticResource HeaderLabel}" HorizontalContentAlignment="Right"/>
+    </Grid>
+</Window>

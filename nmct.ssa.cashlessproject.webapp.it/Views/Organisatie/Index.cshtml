@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Organisatie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+
+    $(function () {
+        showPartial(".newOrganisation");
+        showPartial(".editOrganisation");
+        showPartial(".detailsOrganisation");
+        showPartial(".bekijkKassas");
+        showPartial(".deleteKassa");
+
+
+        $(document).on("click", "#btnSubmit", function (e) {
+
+            $('form').removeData('validator');
+            $('form').removeData('unobtrusiveValidation');
+            $.validator.unobtrusive.parse('form');
+            e.preventDefault();
+            var formulier = $("#formulier");
+            console.log(formulier);
+            formulier.validate();
+            if (formulier.valid()) 
+                {
+                alert("form is valid");
+                formulier.submit();
+            }
+            else {
+                alert("NOT valid");
+            }
+        });
+    });
+
+
+    function showPartial(classLink) {
+        $(classLink).click(function (e) {
+            e.preventDefault();
+            var adres = $(this).attr("href");
+
+            $.ajax({
+                url: adres,
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#partial").html(data);
+                    if (classLink == ".newOrganisation")
+                    {
+                        var submit = $("<input id='btnSubmit' type='submit' value='Registreer' class='btn btn-default' />")
+                        $("#partial").append(submit);
+                    }
+                    else if (classLink == ".editOrganisation")
+                    {
+                        var submit = $("<input id='btnSubmit' type='submit' value='Opslaan' class='btn btn-default' />")
+                        $("#partial").append(submit);
+                    }
+                }
+            });
+        });
+    }
+</script>
+
+
+
+<h2>Overzicht organisaties</h2>
+<br />
+
+<table class="dtable display compact">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(o => o.OrganisatieNaam)</th>
+            <th>@Html.DisplayNameFor(o => o.Adres)</th>
+            <th>@Html.DisplayNameFor(o => o.Stad)</th>
+            <th>@Html.DisplayNameFor(o => o.Postcode)</th>
+            <th>@Html.DisplayNameFor(o => o.Email)</th>
+            <th>@Html.DisplayNameFor(o => o.Telefoon)</th>
+            <th style="width: 200px">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Organisatie organisatie in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => organisatie.OrganisatieNaam)</td>
+                <td>@Html.DisplayFor(modelItem => organisatie.Adres)</td>
+                <td>@Html.DisplayFor(modelItem => organisatie.Stad)</td>
+                <td>@Html.DisplayFor(modelItem => organisatie.Postcode)</td>
+                <td>@Html.DisplayFor(modelItem => organisatie.Email)</td>
+                <td>@Html.DisplayFor(modelItem => organisatie.Telefoon)</td>
+                <td style="width: 200px">
+                    @Html.ActionLink("Wijzig", "Edit", new { id = organisatie.ID }, new { @class = "editOrganisation" }) |
+                    @Html.ActionLink("Details", "Details", new { id = organisatie.ID }, new { @class = "detailsOrganisation" }) |
+                    @Html.ActionLink("Bekijk Kassa's", "BekijkKassas", new { id = organisatie.ID }, new { @class = "bekijkKassas" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<p>@Html.ActionLink("Registreer een nieuwe organisatie", "New", null, new { @class = "newOrganisation" })</p>
+
+@*@foreach (Organisatie organisatie in Model) { @Html.Partial("Details", organisatie); }*@
+
+<br />
+<div id="partial"></div>

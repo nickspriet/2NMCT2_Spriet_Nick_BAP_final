@@ -1,0 +1,38 @@
+﻿<Window x:Class="nmct.ba.cashlessproject.tempui.Klant_Kaart_Opladen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       Title="Klanten_Kaart_Opladen" Height="450" Width="800">
+
+
+    <Grid Background="#FF3C3C3C">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="" Style="{StaticResource HeaderLabel}" Grid.ColumnSpan="7"/>
+        <Button Content="X" Grid.Column="6" />
+        <Label Content="Biljetten invoeren !" Style="{StaticResource KlantLabelTitle}" Grid.Row="1" Grid.ColumnSpan="7"/>
+        <Image Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" />
+        <Label Content="Mieke Hanssens" Style="{StaticResource KlantLabelTextLeft}" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Label Content="Kaartnummer: 0965324852" Style="{StaticResource KlantLabelTextLeft}" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Label Content="€ 37,05" Style="{StaticResource KlantLabelTitle}" Grid.Row="5" Grid.ColumnSpan="7"/>
+        <Button Content="Terug naar home" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <Label Content="30/09/2014 - 17:41" Grid.Row="8" Style="{StaticResource HeaderLabel}" Grid.ColumnSpan="7"  />
+    </Grid>
+</Window>

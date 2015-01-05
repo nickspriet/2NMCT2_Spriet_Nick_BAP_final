@@ -1,0 +1,21 @@
+29/12/2014 23:13:11: Window Service started
+29/12/2014 23:13:41: Timer ticked
+29/12/2014 23:14:11: Timer ticked
+29/12/2014 23:14:41: mscorlib; An error occurred while sending the request.
+29/12/2014 23:14:41: Timer ticked
+29/12/2014 23:14:42: Window Service stopped
+29/12/2014 23:16:37: mscorlib; Er zijn één of meer fouten opgetreden.
+29/12/2014 23:16:37: Window Service started
+29/12/2014 23:17:07: Timer ticked
+29/12/2014 23:17:07: nmct.ba.cashlessproject.service; De objectverwijzing is niet op een exemplaar van een object ingesteld.
+29/12/2014 23:17:12: Window Service stopped
+29/12/2014 23:18:01: Window Service started
+29/12/2014 23:18:31: Timer ticked
+29/12/2014 23:18:31: Ophalen errorlogs gelukt
+29/12/2014 23:18:31: Inserten errorlogs gelukt
+29/12/2014 23:18:31: Deleten errorlogs gelukt
+29/12/2014 23:19:01: Timer ticked
+29/12/2014 23:19:01: Ophalen errorlogs gelukt
+29/12/2014 23:19:31: Timer ticked
+29/12/2014 23:19:31: Ophalen errorlogs gelukt
+29/12/2014 23:19:42: Window Service stopped

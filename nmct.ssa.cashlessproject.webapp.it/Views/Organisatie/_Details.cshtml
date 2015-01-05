@@ -1,0 +1,29 @@
+﻿@model Organisatie
+
+@{
+    Layout = "";
+}
+
+<h4>Details van de organisatie '@Html.DisplayFor(o => o.OrganisatieNaam)'</h4>
+<br />
+<div>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(o => o.ID)</dt>
+        <dd>@Html.DisplayFor(o => o.ID)</dd>
+
+        <dt>@Html.DisplayNameFor(o => o.GebruikersNaam)</dt>
+        <dd>@Html.DisplayFor(o => o.GebruikersNaam)</dd>
+
+        <dt>@Html.DisplayNameFor(o => o.Wachtwoord)</dt>
+        <dd>@Html.DisplayFor(o => o.Wachtwoord)</dd>
+
+        <dt>@Html.DisplayNameFor(o => o.DbNaam)</dt>
+        <dd>@Html.DisplayFor(o => o.DbNaam)</dd>
+
+        <dt>@Html.DisplayNameFor(o => o.DbGebruikersNaam)</dt>
+        <dd>@Html.DisplayFor(o => o.DbGebruikersNaam)</dd>
+
+        <dt>@Html.DisplayNameFor(o => o.DbWachtwoord)</dt>
+        <dd>@Html.DisplayFor(o => o.DbWachtwoord)</dd>
+    </dl>
+</div>

@@ -1,0 +1,25 @@
+﻿<Window x:Class="nmct.ba.cashlessproject.tempui.Klant_StandBy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Title="Klant_StandBy" Height="450" Width="800">
+
+
+    <Grid Background="#FF3C3C3C">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="" Style="{StaticResource HeaderLabel}" Grid.ColumnSpan="2"/>
+        <Label Content="WELKOM" Style="{StaticResource KlantLabelTitle}" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <Label Content="Scan uw kaart om te beginnen." Style="{StaticResource KlantLabelText}" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <Label Content="30/09/2014 - 17:41" Grid.Row="5" Style="{StaticResource HeaderLabel}" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

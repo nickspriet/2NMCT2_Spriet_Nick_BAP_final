@@ -1,0 +1,152 @@
+<Application x:Class="nmct.ba.cashlessproject.ui.management.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" StartupUri="View/Login.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <Application.Resources>
+        <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:nmct.ba.cashlessproject.ui.management.ViewModel" />
+        <Style x:Key="GlobalStyle" TargetType="{x:Type Control}">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="HeaderLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="5,0,5,0" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF252525" />
+        </Style>
+
+        <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Background" Value="#FFF0F0F0" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Margin" Value="30, 5, 5, 5" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Background" Value="#FFF0F0F0" />
+            <Setter Property="Margin" Value="5, 0, 5, 0" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="#FFC0C0C0" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Margin" Value="30, 5, 5, 5" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Padding" Value="5,0,0,0" />
+        </Style>
+
+        <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Margin" Value="30, 5, 5, 5" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Padding" Value="5,0,0,0" />
+        </Style>
+
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Background" Value="Purple" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+       
+        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Background" Value="Purple" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style x:Key="TabTitle" TargetType="{x:Type Label}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Padding" Value="25, 5, 5, 0" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <Style x:Key="GegevensLabels" TargetType="{x:Type Label}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="GegevensTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#22FF00FF" />
+            <Setter Property="Padding" Value="5, 0, 0, 0" />
+        </Style>
+
+        <Style x:Key="GtlTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource GegevensTextBox}">
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+        </Style>
+        <Style x:Key="Datum" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style x:Key="KlantLabelTitle" TargetType="{x:Type Label}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="50" />
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+        </Style>
+
+        <Style x:Key="KlantLabelText" TargetType="{x:Type Label}" BasedOn="{StaticResource KlantLabelTitle}">
+            <Setter Property="FontSize" Value="30" />
+        </Style>
+
+        <Style x:Key="KlantLabelTextLeft" TargetType="{x:Type Label}" BasedOn="{StaticResource KlantLabelText}">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="MenuButtons" TargetType="{x:Type Button}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Background" Value="Purple" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="MinHeight" Value="30" />
+        </Style>
+
+        <Style x:Key="WachtwoordVergeten" TargetType="{x:Type Label}" BasedOn="{StaticResource KlantLabelTitle}">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <Style x:Key="Loginnaam" TargetType="{x:Type TextBox}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Padding" Value="5,0,0,0" />
+        </Style>
+
+        <Style x:Key="Passwordbox" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Padding" Value="5,0,0,0" />
+        </Style>
+
+        <Style x:Key="imgBedrijfslogo" TargetType="{x:Type Image}">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Stretch" Value="UniformToFill" />
+        </Style>
+        
+        <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource GlobalStyle}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Purple" />
+         </Style>
+        
+        <Style TargetType="{x:Type DatePicker}">
+            <Setter Property="VerticalAlignment" Value="Center" /> 
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="MinWidth" Value="150" />
+        </Style>
+    </Application.Resources>
+</Application>

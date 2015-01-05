@@ -1,0 +1,35 @@
+﻿@model KassaIT
+
+@{
+    ViewBag.Title = "DeleteOrganisatieKassa";
+}
+<br />
+<h4>Bent u zeker dat u de kassa '@ViewBag.KassaNaam' uit de organisatie '@ViewBag.SelectedOrganisatie' wilt verwijderen ?</h4>
+<br />
+<div>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.KassaNaam)</dt>
+        <dd>@Html.DisplayFor(model => model.KassaNaam)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Toestel)</dt>
+        <dd>@Html.DisplayFor(model => model.Toestel)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.AankoopDatum)</dt>
+        <dd>@Html.DisplayFor(model => model.AankoopDatum)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.VervalDatum)</dt>
+        <dd>@Html.DisplayFor(model => model.VervalDatum)</dd>
+
+        <dt>Organisatie</dt>
+        <dd>@ViewBag.SelectedOrganisatie</dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" />
+            <a href="/Organisatie/Index"><input type="button" value="Annuleren" class="btn btn-default"></a>
+        </div>
+    }
+</div>

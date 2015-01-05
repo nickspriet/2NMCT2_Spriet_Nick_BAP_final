@@ -1,0 +1,34 @@
+﻿@model IEnumerable<KassaIT>
+
+@{
+    Layout = "";
+}
+
+@*<p>@Html.ActionLink("Create New", "Create")</p>*@
+<h4>Kassa's van de organisatie '@ViewBag.OrganisatieNaam'</h4>
+<br />
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(k => k.ID)</th>
+        <th>@Html.DisplayNameFor(k => k.KassaNaam)</th>
+        <th>@Html.DisplayNameFor(k => k.Toestel)</th>
+        <th>@Html.DisplayNameFor(k => k.AankoopDatum)</th>
+        <th>@Html.DisplayNameFor(k => k.VervalDatum)</th>
+        <th></th>
+    </tr>
+
+@foreach (KassaIT kassa in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => kassa.ID)</td>
+        <td>@Html.DisplayFor(modelItem => kassa.KassaNaam)</td>
+        <td>@Html.DisplayFor(modelItem => kassa.Toestel)</td>
+        <td>@Html.DisplayFor(modelItem => kassa.AankoopDatum)</td>
+        <td>@Html.DisplayFor(modelItem => kassa.VervalDatum)</td>
+        <td id="deleteKassa">
+            @Html.ActionLink("Verwijder uit organisatie", "DeleteOrganisatieKassa", new { id = kassa.ID }, new { @class = "deleteKassa" })
+        </td>
+    </tr>
+}
+
+</table>

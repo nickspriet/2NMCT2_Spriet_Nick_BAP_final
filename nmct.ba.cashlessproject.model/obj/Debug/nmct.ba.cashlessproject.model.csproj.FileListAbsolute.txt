@@ -1,0 +1,8 @@
+D:\2 NMCT\Business Applications\Project\Project cashless payment\2015-01-04\1\nmct.ba.cashlessproject\nmct.ba.cashlessproject.model\bin\Debug\nmct.ba.cashlessproject.model.dll
+D:\2 NMCT\Business Applications\Project\Project cashless payment\2015-01-04\1\nmct.ba.cashlessproject\nmct.ba.cashlessproject.model\bin\Debug\nmct.ba.cashlessproject.model.pdb
+D:\2 NMCT\Business Applications\Project\Project cashless payment\2015-01-04\1\nmct.ba.cashlessproject\nmct.ba.cashlessproject.model\bin\Debug\GalaSoft.MvvmLight.dll
+D:\2 NMCT\Business Applications\Project\Project cashless payment\2015-01-04\1\nmct.ba.cashlessproject\nmct.ba.cashlessproject.model\bin\Debug\GalaSoft.MvvmLight.pdb
+D:\2 NMCT\Business Applications\Project\Project cashless payment\2015-01-04\1\nmct.ba.cashlessproject\nmct.ba.cashlessproject.model\bin\Debug\GalaSoft.MvvmLight.xml
+D:\2 NMCT\Business Applications\Project\Project cashless payment\2015-01-04\1\nmct.ba.cashlessproject\nmct.ba.cashlessproject.model\obj\Debug\nmct.ba.cashlessproject.model.csprojResolveAssemblyReference.cache
+D:\2 NMCT\Business Applications\Project\Project cashless payment\2015-01-04\1\nmct.ba.cashlessproject\nmct.ba.cashlessproject.model\obj\Debug\nmct.ba.cashlessproject.model.dll
+D:\2 NMCT\Business Applications\Project\Project cashless payment\2015-01-04\1\nmct.ba.cashlessproject\nmct.ba.cashlessproject.model\obj\Debug\nmct.ba.cashlessproject.model.pdb

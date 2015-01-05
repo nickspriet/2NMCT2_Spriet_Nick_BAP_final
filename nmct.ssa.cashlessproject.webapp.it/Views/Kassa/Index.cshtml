@@ -1,0 +1,97 @@
+﻿@model IEnumerable<KassaIT>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+
+    $(function () {
+
+        showPartial(".newKassa");
+        showPartial(".editKassa");
+        showPartial(".detailsKassa");
+        showPartial(".deleteKassa");
+
+
+        $(document).on("click", "#btnSubmit", function (e) {
+
+            $('form').removeData('validator');
+            $('form').removeData('unobtrusiveValidation');
+            $.validator.unobtrusive.parse('form');
+            e.preventDefault();
+            var formulier = $("#formulier");
+            console.log(formulier);
+            formulier.validate();
+            if (formulier.valid()) {
+                alert("form is valid");
+                formulier.submit();
+            }
+            else {
+                alert("NOT valid");
+            }
+        });
+    });
+
+    function showPartial(classLink) {
+        $(classLink).click(function (e) {
+            e.preventDefault();
+            var adres = $(this).attr("href");
+
+            $.ajax({
+                url: adres,
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#partial").html(data);
+                    if (classLink == ".newKassa") {
+                        $("#VervalDatum").removeAttr("aria-required");
+                        $("#VervalDatum").removeAttr("data-val");
+                        var submit = $("<input id='btnSubmit' type='submit' value='Toevoegen' class='btn btn-default' />")
+                        $("#partial").append(submit);
+                    }
+                    else if (classLink == ".editKassa") {
+                        $("#VervalDatum").removeAttr("aria-required");
+                        $("#VervalDatum").removeAttr("data-val");
+                        var submit = $("<input id='btnSubmit' type='submit' value='Opslaan' class='btn btn-default' />")
+                        $("#partial").append(submit);
+                    }
+                }
+            });
+        });
+    }
+</script>
+
+<h2>Overzicht kassa's</h2>
+<br />
+<table class="dtable display compact">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(k => k.KassaNaam)</th>
+            <th>@Html.DisplayNameFor(k => k.AankoopDatum)</th>
+            <th>@Html.DisplayNameFor(k => k.VervalDatum)</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (KassaIT kassa in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => kassa.KassaNaam)</td>
+                <td>@Html.DisplayFor(modelItem => kassa.AankoopDatum)</td>
+                <td>@Html.DisplayFor(modelItem => kassa.VervalDatum)</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = kassa.ID }, new { @class = "detailsKassa" }) |
+                    @Html.ActionLink("Wijzig", "Edit", new { id = kassa.ID }, new { @class = "editKassa" }) |
+                    @Html.ActionLink("Verwijder", "Delete", new { id = kassa.ID }, new { @class = "deleteKassa" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+<p>@Html.ActionLink("Nieuwe kassa toevoegen", "New", null, new { @class = "newKassa" })</p>
+
+<br />
+<div id="partial"></div>
